@@ -1,0 +1,150 @@
+{
+  "race": "race",
+  "min_lap": 5,
+  "users": [
+    {
+      "username": "admin",
+      "password": "admin",
+      "permissions": "admin",
+      "control_point": "KPP1"
+    },
+    {
+      "username": "user",
+      "password": "user",
+      "permissions": "user",
+      "control_point": "KPP1"
+    },
+    {
+      "username": "1",
+      "password": "1",
+      "permissions": "user",
+      "control_point": "KPP1"
+    },
+    {
+      "username": "2",
+      "password": "2",
+      "permissions": "user",
+      "control_point": "KPP2"
+    },
+    {
+      "username": "3",
+      "password": "3",
+      "permissions": "user",
+      "control_point": "KPP3"
+    },
+    {
+      "username": "4",
+      "password": "4",
+      "permissions": "user",
+      "control_point": "KPP4"
+    },
+    {
+      "username": "5",
+      "password": "5",
+      "permissions": "user",
+      "control_point": "KPP5"
+    }
+  ],
+  "race_track": [
+    {
+      "id": "KPP1",
+      "title": "КП1-1"
+    },
+    {
+      "id": "KPP2",
+      "title": "КП2-1"
+    },
+    {
+      "id": "KPP3",
+      "title": "КП3-1"
+    },
+    {
+      "id": "KPP4",
+      "title": "КП4-1"
+    },
+    {
+      "id": "KPP5",
+      "title": "КП5-1"
+    },
+    {
+      "id": "KPP1",
+      "title": "КП1-2"
+    },
+    {
+      "id": "KPP2",
+      "title": "КП2-2"
+    },
+    {
+      "id": "KPP3",
+      "title": "КП3-2"
+    },
+    {
+      "id": "KPP4",
+      "title": "КП4-2"
+    },
+    {
+      "id": "KPP5",
+      "title": "КП5-2"
+    },
+    {
+      "id": "KPP1",
+      "title": "КП1-3"
+    },
+    {
+      "id": "KPP2",
+      "title": "КП2-3"
+    },
+    {
+      "id": "KPP3",
+      "title": "КП3-3"
+    },
+    {
+      "id": "KPP4",
+      "title": "КП4-3"
+    },
+    {
+      "id": "KPP5",
+      "title": "КП5-3"
+    },
+    {
+      "id": "KPP1",
+      "title": "КП1-4"
+    },
+    {
+      "id": "KPP2",
+      "title": "КП2-4"
+    },
+    {
+      "id": "KPP3",
+      "title": "КП3-4"
+    },
+    {
+      "id": "KPP4",
+      "title": "КП4-4"
+    },
+    {
+      "id": "KPP5",
+      "title": "КП5-4"
+    },
+    {
+      "id": "KPP1",
+      "title": "КП1-5"
+    },
+    {
+      "id": "KPP2",
+      "title": "КП2-5"
+    },
+    {
+      "id": "KPP3",
+      "title": "КП3-5"
+    },
+    {
+      "id": "KPP4",
+      "title": "КП4-5"
+    },
+    {
+      "id": "KPP5",
+      "title": "КП5-5"
+    }
+  ]
+}

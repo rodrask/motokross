@@ -1,0 +1,6 @@
+.idea
+.vscode
+.pyenv
+__pycache__
+docker-compose.yml
+.DS_Store

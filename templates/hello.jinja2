@@ -1,0 +1,25 @@
+{% extends "base.jinja2" %}
+{% block title %}Инфо: {{race}}{% endblock %}
+
+{% block content %}
+<p>Гонка: <a href="/{{race}}">{{race}}</a></p>
+{% if is_logged %}
+    <p><a href="/{{race}}/logout">Выйти</a></p>
+{% else %}
+    <p><a href="/{{race}}/do_login">Логин</a></p>
+{% endif %}
+<div class="pure-menu custom-restricted-width">
+    <span class="pure-menu-heading">Список пользователей:</span>
+    <ol class="pure-menu-list">
+        {% for u in users %}
+        <li class="pure-menu-item"><p>{{u}}</p></li>
+        {% endfor %}
+    </ol>
+    <span class="pure-menu-heading">Список Кпп:</span>
+    <ol class="pure-menu-list">
+        {% for k in kpps %}
+        <li class="pure-menu-item"><p>{{k}}</p></li>
+        {% endfor %}
+    </ol>
+</div>
+{% endblock %}

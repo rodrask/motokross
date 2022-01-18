@@ -1,0 +1,16 @@
+{% extends "base.jinja2" %}
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+    <p>{{message}}</p>
+    {% if error_msg %}
+        <p>{{error_msg}}</p>
+    {% endif %}
+    {% if is_admin %}
+    <p><a href="/{{race_path}}/generate_qr/10">Qr коды</a></p>
+    {% endif %}
+    <p><a href="/{{race_path}}/stat.html">Таблица</a></p>
+    <p><a href="/{{race_path}}/kp_stat">Таблица для КП</a></p>
+    <p><a href="/{{race_path}}/stat.csv">Выгрузить csv файл</a></p>
+    <p><a href="/{{race_path}}/logout">Logout</a></p>
+{% endblock %}

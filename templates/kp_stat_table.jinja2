@@ -1,0 +1,25 @@
+{% extends "base.jinja2" %}
+{% block title %}Текущие результаты для КП {{current_kp}}{% endblock %}
+{% block content %}
+<span class="pure-menu-heading">Список КП:</span>
+    <ol class="pure-menu-list">
+        {% for k in kps %}
+        <li class="pure-menu-item"><a href="/{{race_path}}/kp_stat/{{k}}">{{k}}</a></li>
+        {% endfor %}
+    </ol>
+</span>
+<table class="pure-table">
+    <tr>
+    {% for h in headers %}
+        <th>{{h}}</th>
+    {% endfor %}
+    </tr>
+    {% for row in kp_data %}
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+    </tr>
+    {% endfor %}
+<table>
+{% endblock %}

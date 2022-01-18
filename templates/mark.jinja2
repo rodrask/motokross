@@ -1,0 +1,8 @@
+{% extends "base.jinja2" %}
+{% block title %}{{text}}{% endblock %}
+{% block content %}
+<H2 style="text-align: center">{{text}}</H2>
+<div style="text-align: center">
+    <img src=/static/{{state}}.png />
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+services:
+  motokross:
+    image: ${IMAGE_NAME:-motokross}
+    volumes:
+      - ${LOCAL_DATAPATH:-./moto_app_data}:/moto
+    restart: always
+    labels: 
+      - traefik.enable=true
+      - traefik.http.routers.motokross.rule=Host(`${HOST:-motokross.localhost}`)
+      - traefik.http.routers.motokross.entrypoints=websecure
+      - traefik.http.routers.motokross.tls=true
+      - traefik.http.routers.motokross.tls.certresolver=myresolver
+    ports:
+      - ${PORT:-8877}
+    command: python server.py --data /moto/data --config /moto/config.json --port 8877 
+
+  static:
+    image: flashspys/nginx-static
+    volumes:
+      - ${LOCAL_STATIC:-./static}:/static/static
+      - ${LOCAL_STATIC:-./static}/robots.txt:/static/robots.txt
+      - ${LOCAL_STATIC:-./static}/favicon.ico:/static/favicon.ico
+      - ${LOCAL_DATAPATH:-./moto_app_data}/data/qr:/static/qr
+    ports:
+      - 80
+    labels: 
+      - traefik.enable=true
+      - traefik.http.routers.static.rule=Host(`${HOST:-motokross.localhost}`) && PathPrefix(`/robots.txt`,`/favicon.ico`, `/static/`, `/qr/`)
+      - traefik.http.routers.static.entrypoints=websecure
+      - traefik.http.routers.static.tls=true
+      - traefik.http.routers.static.tls.certresolver=myresolver
+      
+  reverse-proxy:
+    # The official v2 Traefik docker image
+    image: traefik:v2.4
+    # Enables the web UI and tells Traefik to listen to docker
+    command: 
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entryPoints.web.address=:80
+      - --entrypoints.web.http.redirections.entryPoint.to=websecure
+      - --entrypoints.web.http.redirections.entryPoint.scheme=https
+      - --entryPoints.websecure.address=:443
+      - --entrypoints.websecure.http.tls.certResolver=myresolver
+      - --certificatesresolvers.myresolver.acme.tlschallenge=true
+      - --certificatesresolvers.myresolver.acme.storage=/acme.json
+      - --log.level=INFO
+      # - --certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${LOCAL_DATAPATH:-./moto_app_data}/acme.json:/acme.json
+
+  db_backup:
+    image: litestream/litestream:latest
+    environment:
+      - LITESTREAM_ACCESS_KEY_ID
+      - LITESTREAM_SECRET_ACCESS_KEY
+      - RACE_NAME
+      - BUCKET_NAME
+      - BUCKET_PATH
+      - ENDPOINT
+    volumes:
+      - ${LOCAL_DATAPATH:-./moto_app_data}:/moto
+      - ${LOCAL_DATAPATH:-./moto_app_data}/litestream.yml:/etc/litestream.yml
+    command: replicate

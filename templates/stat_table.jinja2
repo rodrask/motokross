@@ -1,0 +1,20 @@
+{% extends "base.jinja2" %}
+{% block title %}Текущие результаты{% endblock %}
+{% block content %}
+<table class="pure-table">
+    <tr>
+    {% for h in headers %}
+        <th>{{h}}</th>
+    {% endfor %}
+    </tr>
+    {% for row in rows %}
+    <tr>
+        <td>{{row.user_id}}</td>
+        <td>{{row.size}}</td>
+        {% for ts in row.timestamps%}
+            <td>{{ts}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+<table>
+{% endblock %}

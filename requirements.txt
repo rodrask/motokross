@@ -1,0 +1,7 @@
+aiohttp
+qrcode[pil]
+Jinja2
+aiohttp-jinja2
+pytz
+aiohttp-security[session]
+cryptography

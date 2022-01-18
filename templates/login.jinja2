@@ -1,0 +1,18 @@
+{% extends "base.jinja2" %}
+{% block title %}Авторизация{% endblock %}
+{% block content %}
+<div style="center">
+    <p>Введите логин и пароль</p>
+     {% if msg %}
+     <p>{{msg}}</p>
+     {% endif %}
+    <form class="pure-form pure-form-stacked text-align: center" action="/{{race_path}}/login" method="post">
+        Логин:
+        <input type="text" name="username">
+        Пароль:
+        <input type="password" name="password">
+        <input type="submit" value="Login">
+        <input type="hidden" name="ref_url" value={{ref_url}}>
+    </form>
+</div>
+{% endblock %}
